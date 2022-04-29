@@ -1,5 +1,8 @@
 package qmp;
-
-public class Material {
-
+public enum Material {
+    ALGODON,
+    JEAN,
+    CUERO,
+    LYCRA;
+    // Agregar mas
 }

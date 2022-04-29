@@ -1,16 +1,21 @@
 package qmp;
 
 import java.util.Objects;
-
-public class TipoPrenda {
+public enum TipoPrenda {
+    ZAPATO(CategoriaPrenda.CALZADO),
+    VESTIDO(CategoriaPrenda.SUPERIOR),
+    COLLAR(CategoriaPrenda.ACCESORIO),
+    CAMISA(CategoriaPrenda.SUPERIOR),
+    CORBATA(CategoriaPrenda.ACCESORIO);
+    // Anadir mas.
     CategoriaPrenda categoria;
 
-    public TipoPrenda(String nombre, CategoriaPrenda categoria) {
-        this.categoria = Objects.requireNonNull(categoria, "La categoria de un tipo es obligatoria.");
+    private TipoPrenda(CategoriaPrenda categoria) {
+        this.categoria = categoria;
+    }
+    public CategoriaPrenda categoria() {
+        return this.categoria;
     }
 
-    public CategoriaPrenda getCategoria() {
-        return categoria;
-    }
 }
 

@@ -4,42 +4,37 @@ import java.util.Optional;
 import java.util.Objects;
 
 public class Prenda {
-    private String nombre;
-
+    String nombre;
     TipoPrenda tipo;
-
     Material material;
-
-    private Col colorPrimario;
-    private Optional<Col> colorSecundario;
-
-    public Prenda(String nombre, TipoPrenda tipo, Material material, Col colorPrimario) {
-        this.nombre = Objects.requireNonNull(nombre, "El nombre de la prenda es obligatorio");
-        this.tipo = Objects.requireNonNull(tipo, "El tipo de la prenda es obligatorio");
-        this.material = Objects.requireNonNull(material, "El material de la prenda es obligatorio");
-        this.colorPrimario = Objects.requireNonNull(colorPrimario, "El color de la prenda es obligatorio");
-        this.colorSecundario = Optional.ofNullable(null);
+    Trama trama;
+    Col colorPrimario;
+    Col colorSecundario;
+    public Prenda(String nombre, TipoPrenda tipo, Material material, Col colorPrimario, Trama trama, Col colorSecundario) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.material = material;
+        this.colorPrimario = colorPrimario;
+        this.colorSecundario = colorSecundario;
+        this.trama = trama;
     }
-
-    public void anadirColorSecundario(Col colorSecundario) {
-        this.colorSecundario = Optional.ofNullable(colorSecundario);
-    }
-
     public CategoriaPrenda getCategoria() {
-        return tipo.getCategoria();
+        return this.tipo.categoria();
     }
 
     public Col getColorPrimario() {
-        return colorPrimario;
+        return this.colorPrimario;
     }
 
     public Material getMaterial() {
-        return material;
+        return this.material;
     }
 
     public TipoPrenda getTipo() {
-        return tipo;
+        return this.tipo;
     }
+
+    public Trama getTrama() {return this.trama; }
 
 }
 
