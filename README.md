@@ -1,49 +1,6 @@
-# java-base-project
-
-Esta es una plantilla de proyecto diseñada para: 
-
-* Java 8. :warning: Si bien el proyecto no lo limita explícitamente, el comando `mvn verify` no funcionará con versiones mas modernas de Java. 
-* JUnit 5. :warning: La versión 5 de JUnit es la más nueva del framework y presenta algunas diferencias respecto a la versión "clásica" (JUnit 4). Para mayores detalles, ver: 
-  *  [Apunte de herramientas](https://docs.google.com/document/d/1VYBey56M0UU6C0689hAClAvF9ILE6E7nKIuOqrRJnWQ/edit#heading=h.dnwhvummp994)
-  *  [Entrada de Blog (en inglés)](https://www.baeldung.com/junit-5-migration) 
-  *  [Entrada de Blog (en español)](https://www.paradigmadigital.com/dev/nos-espera-junit-5/)
-* Maven 3.3 o superior
-
-# Ejecutar tests
-
-```
-mvn test
-```
-
-# Validar el proyecto de forma exahustiva
-
-```
-mvn clean verify
-```
-
-Este comando hará lo siguiente:
-
- 1. Ejecutará los tests
- 2. Validará las convenciones de formato mediante checkstyle
- 3. Detectará la presencia de (ciertos) code smells
- 4. Validará la cobertura del proyecto
-
-# Entrega del proyecto
-
-Para entregar el proyecto, crear un tag llamado `entrega-final`. Es importante que antes de realizarlo se corra la validación
-explicada en el punto anterior. Se recomienda hacerlo de la siguiente forma:
-
-```
-mvn clean verify && git tag entrega-final && git push origin HEAD --tags
-```
-
-# Configuración del IDE (IntelliJ)
-
- 1. Tabular con dos espacios: ![Screenshot_2021-04-09_18-23-26](https://user-images.githubusercontent.com/677436/114242543-73e1fe00-9961-11eb-9a61-7e34be9fb8de.png)
- 2. Instalar y configurar Checkstyle:
-    1. Instalar el plugin https://plugins.jetbrains.com/plugin/1065-checkstyle-idea:
-    2. Configurarlo activando los Checks de Google y la versión de Checkstyle `== 8.35`: ![Screenshot_2021-04-09_18-16-13](https://user-images.githubusercontent.com/677436/114242548-75132b00-9961-11eb-972e-28e6e1412979.png)
- 3. Usar fin de linea unix
-    1. En **Settings/Preferences**, ir a a **Editor | Code Style**.
-    2. En la lista **Line separator**, seleccionar `Unix and OS X (\n)`.
- ![Screenshot 2021-04-10 03-49-00](https://user-images.githubusercontent.com/11875266/114260872-c6490c00-99ad-11eb-838f-022acc1903f4.png)
+Alternativa descartada en QMP2:
+Ante al requerimiento de poder cargar las prendas en "pasos" (primero tipo, luego materiales y etc) me surgió el conflicto de cómo implementarlo de manera tal que en ningún momento se cargue una prenda que no este correctamente configurada (como podría pasar si se saltea alguno de los dos pasos mencionados). La primera solución que pensé fue hacerlo a través de una clase Borrador que tenga 2 metodos: el constructor en el que se especifica tipo y getPrenda(), que recibe los demas atributos de una prenda propiamente configurada y devuelve la misma. En este caso, nunca se podria llegar a una prenda mal confuigurada porque no se podria terminar de configurar una prenda (paso 2) que no haya sido instanciada previamente (paso 1). El problema que surge con esto es que es **inflexible**, añadir el requerimiento de que se pueda crear una prenda en un paso más implicaría agregar OTRA clase intermedia para asegurar el orden, y así al infinito.
+Dado esta implicación, descarté esa solucion y opté por una mas del estilo builder, donde existe la clase Borrador que tiene todos los atributos de una prenda con sus respectivos setters, por lo que se podría dividir la creación de una prenda en tantos pasos como se quiera pues la validación está en el método que la construye y devuelve. Ventajas: se resuelve el requerimiento del borrador, se gana flexibilidad y se libera la responsabilidad de la clase Prenda de validar que la carga sea correcta.
+Respecto a las validaciones en Borrador, surge el conflicto de validar los tributos en los setters, en construirPrenda() o en ambos lugares. Validar contra null en los setters es fallar lo mas temprano posible, pero no asegura que no exista algun atributo nunca haya sido seteado, por lo que ví necesario validar en construirPrenda() para asegurar que TODOS los atributos tengan un valor valido a la hora de deviolver la prenda. Ante la posiblidad de validar en ambos lugares, decidí hacerlo únicamente en construirPrenda(), sacrificando la posibilidad de fallar lo antes posible pero ganando en el campo de la simplicidad del código.
+Respecto al requerimiento de que la trama por defecto sea lisa, mi solución fue que dicho atributo se asigne LISO en el constructor de Borrador.
+No llegué a hacer el diagrama de clases pero esta en proceso :(.
