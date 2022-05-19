@@ -10,27 +10,33 @@ public class Borrador {
         this.trama = Trama.LISA;
     }
 
-    public void setColorPrimario(Col colorPrimario) {
+    public Borrador setColorPrimario(Col colorPrimario) {
         this.colorPrimario = colorPrimario;
+        return this;
     }
 
-    public void setMaterial(Material material) {
+    public Borrador setMaterial(Material material) {
         this.material = material;
+        return this;
     }
 
-    public void setColorSecundario(Col colorSecundario) {
+    public Borrador setColorSecundario(Col colorSecundario) {
         this.colorSecundario = colorSecundario;
+        return this;
     }
 
-    public void setNombre(String nombre) {
+    public Borrador setNombre(String nombre) {
         this.nombre = nombre;
+        return this;
     }
 
-    public void setTipo(TipoPrenda tipo) {
+    public Borrador setTipo(TipoPrenda tipo) {
         this.tipo = tipo;
+        return this;
     }
-    public void setTrama(Trama trama) {
+    public Borrador setTrama(Trama trama) {
         this.trama = trama;
+        return this;
     }
 
     public Prenda construirPrenda() {
