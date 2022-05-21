@@ -13,7 +13,7 @@ Respecto al requerimiento de que la trama por defecto sea lisa, mi solución fue
 <br/>
 <br/>
 
-#### QMP3:
+#### QMP4:
 Ante el requerimiento de que la API del clima pueda cambiar en un futuro, decidi modelar ServicioClima como una interfaz e implementar una clase que adapte AccuWeatherAPI a la interfaz antes mencionada, todo esto para hacer que el sistema no sea dependiente de esa API en particular.
 
 Ante el requerimiento de que se pueda cambiar la API, decidi implementar un service locator que contenga el ServicioClima que se este utilizando en un momento dado y permita cambiarlo a traves de un setter.
