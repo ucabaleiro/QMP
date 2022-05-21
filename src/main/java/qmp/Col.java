@@ -9,5 +9,6 @@ public class Col {
         this.green = green;
     }
     public static Col ROJO = new Col(255, 0, 0);
+    public static Col VERDE = new Col(0, 255, 0);
     // definir otros colores particulares.
 }

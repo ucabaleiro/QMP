@@ -6,6 +6,7 @@ public class Borrador {
     Trama trama;
     Col colorPrimario;
     Col colorSecundario;
+    Integer tempMaxima;
     public Borrador() {
         this.trama = Trama.LISA;
     }
@@ -23,6 +24,11 @@ public class Borrador {
     public Borrador setColorSecundario(Col colorSecundario) {
         this.colorSecundario = colorSecundario;
         return this;
+    }
+
+    public Borrador setTempMaxima(Integer tempMaxima) {
+    this.tempMaxima = tempMaxima;
+    return this;
     }
 
     public Borrador setNombre(String nombre) {
@@ -45,7 +51,8 @@ public class Borrador {
         if (this.colorPrimario == null) throw new NullPointerException("La prenda debe tener un color primario.");
         if (this.material == null) throw new NullPointerException("La prenda debe tener un material.");
         if (this.tipo == null) throw new NullPointerException("La prenda debe tener un tipo.");
+        if (this.tempMaxima == null) throw new NullPointerException("La prenda debe tener una temperatura maxima.");
 
-        return new Prenda(this.nombre, this.tipo, this.material, this.colorPrimario, this.trama, this.colorSecundario);
+        return new Prenda(this.nombre, this.tipo, this.material, this.colorPrimario, this.trama, this.colorSecundario, this.tempMaxima);
     }
 }

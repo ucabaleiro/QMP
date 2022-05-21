@@ -10,13 +10,15 @@ public class Prenda {
     Trama trama;
     Col colorPrimario;
     Col colorSecundario;
-    public Prenda(String nombre, TipoPrenda tipo, Material material, Col colorPrimario, Trama trama, Col colorSecundario) {
+    Integer tempMaxima;
+    public Prenda(String nombre, TipoPrenda tipo, Material material, Col colorPrimario, Trama trama, Col colorSecundario, Integer tempMaxima) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.material = material;
         this.colorPrimario = colorPrimario;
         this.colorSecundario = colorSecundario;
         this.trama = trama;
+        this.tempMaxima = tempMaxima;
     }
     public CategoriaPrenda getCategoria() {
         return this.tipo.categoria();
@@ -35,6 +37,14 @@ public class Prenda {
     }
 
     public Trama getTrama() {return this.trama; }
+
+    public Boolean esDeCategoria(CategoriaPrenda categoria) {
+        return this.getCategoria() == categoria;
+    }
+
+    public Boolean esTemperaturaApta(Integer temperatura) {
+        return this.tempMaxima > temperatura;
+    }
 
 }
 

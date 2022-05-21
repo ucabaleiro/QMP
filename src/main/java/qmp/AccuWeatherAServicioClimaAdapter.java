@@ -4,19 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AccuWeatherAServicioClimaAdapter implements ServicioClima{
-
-  static private AccuWeatherAServicioClimaAdapter INSTANCE = new AccuWeatherAServicioClimaAdapter();
   AccuWeatherAPI api;
 
-
-  private AccuWeatherAServicioClimaAdapter() {
+  public AccuWeatherAServicioClimaAdapter() {
     this.api = new AccuWeatherAPI();
   }
-
-  static public AccuWeatherAServicioClimaAdapter getInstance() {
-    return INSTANCE;
-  }
-
   private List<Map<String, Object>> getCondicionesClimaticas() {
     return api.getWeather("Buenos Aires, Argentina");
   }
