@@ -24,4 +24,6 @@ Con la idea de reducir los costos de los llamados a la API y hacer que se pueda 
 
 DC:
 ![](class-diagram.png)
-Tambien disponible [aqui](//www.plantuml.com/plantuml/ZLBVgzCm57xFNn7pf48BYe-ZhAjJ2jEDTIBuTaYFNQ1focaYoDp_RcXI9Tikzxxbd7m_ldxfUh90rkcUlR9drCWrqCHa3zF4FpkW5eZC21E_i0u79A36TKWuI0Mltx0hIq1PLd3nLl231xIGtkLvmHkaNqegK_LAmyv8i8POS8iSVl6QuHZKtWd-1IoIWZxTv_bxmIlJ6xh5dmWqt2tLQ68iXeFJlFAgdV6w_uoRRuVjiTuVMVtrKpXKvUv7-N7FoghQDdk_OjT0_gyMvYLYc4A0Qlwia915GanqQxvqi354q1hYguZTEDMtICM5IJDCbfoY-IPqly3dRaL4_4R1KzNIEZ-QkTfu3hLyUFgbH7XjiP2ZriCNvAkmHHuNnVotsDhdWK6Yp-gdX3d7VwZbWwKcZAd18lq4YUb5C3cX7f70EWgYopTBwRuZs3DIcR3A5aOlzvZyB2jpOvx_kKjuxtcesGlKI7LdcnMtpBLltEd-Bm00).
+
+#### QMP5:
+Se añade la clase User. Un User tiene una lista de Guardarropas y cada Guardarropa tiene una referencia al User que lo creo (dueño). Un usuario puede enviar solicitudes a un guardarropas para añadir o eliminar prendas. Las solicitudes de añadir y eliminar se modelaron como dos clases que heredan de una clase abstracta Solicitud que define la interfaz aceptar() y revertir(). Un Guardarropas recibe la solicitud y en caso de que el solicitante sea el dueño del guardarropas, se acepta automaticamente, caso contrario se "reenvía" la solicitud al dueño del Guardarropas, que puede aceptarla o rechazarla cuando quiera. La solicitudes aceptadas se guardan en el Guardarropas sobre el que tuvieron efecto a modo de historial, de manera que se puedan revertir.
