@@ -1,7 +1,4 @@
-package qmp;
-
-import java.util.Optional;
-import java.util.Objects;
+package qmp.prenda;
 
 public class Prenda {
     String nombre;

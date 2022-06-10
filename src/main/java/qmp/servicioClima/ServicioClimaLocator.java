@@ -1,4 +1,4 @@
-package qmp;
+package qmp.servicioClima;
 
 public class ServicioClimaLocator {
   static private ServicioClimaLocator INSTANCE = new ServicioClimaLocator(new AccuWeatherAServicioClimaAdapter());

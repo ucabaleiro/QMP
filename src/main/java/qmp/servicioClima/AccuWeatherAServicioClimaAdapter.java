@@ -1,4 +1,4 @@
-package qmp;
+package qmp.servicioClima;
 
 import java.util.List;
 import java.util.Map;

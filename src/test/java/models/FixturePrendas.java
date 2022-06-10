@@ -1,6 +1,6 @@
 package models;
 
-import qmp.*;
+import qmp.prenda.*;
 
 public class FixturePrendas {
   static public Borrador borradorGenerico() {

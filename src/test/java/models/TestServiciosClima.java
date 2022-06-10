@@ -3,6 +3,10 @@ package models;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import qmp.*;
+import qmp.Atuendo;
+import qmp.prenda.Prenda;
+import qmp.servicioClima.ServicioClima;
+import qmp.servicioClima.ServicioClimaLocator;
 
 import static models.FixturePrendas.borradorGenerico;
 
@@ -12,7 +16,9 @@ class TestServiciosClima {
   public void seGeneraUnaSugerenciaCoherenteConLaTemperatura() {
     ServicioClimaLocator.setServicioClima(new ImpostorServicioClima(25));
 
-    Guardarropas guardarropas = new Guardarropas();
+    User usuario = new User();
+
+    Guardarropas guardarropas = new Guardarropas(usuario);
     Prenda correctaSuperior = borradorGenerico().setTempMaxima(30).construirPrenda();
 
     guardarropas.cargarPrenda(correctaSuperior);

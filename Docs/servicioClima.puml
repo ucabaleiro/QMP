@@ -1,0 +1,25 @@
+@startuml
+
+interface ServicioClima {
+getTemperatura()
+}
+
+class ServicioClimaLocator {
+getInstance()
+getServicioClima()
+setServicioClima()
+}
+ServicioClimaLocator -left-> "1"ServicioClima
+
+class AccuWeatherAServicioClimaAdapter {
+getTemperatura()
+}
+AccuWeatherAServicioClimaAdapter .up.|> ServicioClima
+
+class AccuWeatherAPI
+AccuWeatherAServicioClimaAdapter -right-> AccuWeatherAPI
+
+
+
+
+@enduml

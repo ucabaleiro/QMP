@@ -1,4 +1,4 @@
-package qmp;
+package qmp.prenda;
 public enum CategoriaPrenda {
     SUPERIOR,
     INFERIOR,

@@ -1,4 +1,4 @@
-package qmp;
+package qmp.prenda;
 public class Col {
     Integer red;
     Integer green;

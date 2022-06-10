@@ -1,6 +1,5 @@
-package qmp;
+package qmp.prenda;
 
-import java.util.Objects;
 public enum TipoPrenda {
     ZAPATO(CategoriaPrenda.CALZADO),
     VESTIDO(CategoriaPrenda.SUPERIOR),

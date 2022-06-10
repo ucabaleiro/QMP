@@ -1,0 +1,54 @@
+@startuml
+
+skinparam line ortho
+
+class Guardarropas {
+historialSolicitudesAceptadas
+duenio
+generarSugerencia()
+cargarPrenda()
+anadirSolicitudAceptadaAHistorial()
+solicitarCambio()
+}
+Guardarropas-->"*"Solicitud
+Guardarropas--> "1"User
+
+class User {
+solicitarAnadirPrenda()
+solicitarEliminarPrenda()
+aceptarSolicitud()
+rechazarSolicitud()
+crearGuardarropas()
+anadirGuardarropas()
+}
+User -> "*"Guardarropas
+User -> "*"Solicitud
+
+
+abstract class Solicitud {
+aceptar()
+}
+Solicitud -left-> "1"Prenda
+Solicitud -> "1"Guardarropas
+Solicitud -> "1"User
+
+class SolicitudEliminarPrenda
+SolicitudEliminarPrenda -up-|> Solicitud
+class SolicitudAnadirPrenda
+SolicitudAnadirPrenda -up-|> Solicitud
+
+class Prenda
+
+Guardarropas ..>"Genera" Atuendo
+Atuendo -->"4"Prenda
+
+class ServicioClimaLocator
+Guardarropas .down.> ServicioClimaLocator
+ServicioClimaLocator -down-> ServicioClima
+
+Interface ServicioClima {
+getTemperatura()
+}
+Guardarropas .down.> ServicioClima
+
+@enduml

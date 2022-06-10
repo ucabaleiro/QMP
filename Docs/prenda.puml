@@ -1,0 +1,29 @@
+@startuml
+
+class Prenda {
+esTemperaturaApta()
+esDeCategoria()
+}
+Prenda -up-> "1"TipoPrenda
+Prenda -up-> "1..2"Color
+Prenda -up-> "1"Trama
+Prenda -up-> "1"Material
+
+class Borrador {
+construirPrenda()
+}
+Borrador .down.>"construye" Prenda
+
+Borrador -down-> "1"TipoPrenda
+Borrador -down-> "1..2"Color
+Borrador -down-> "1"Trama
+Borrador -down-> "1"Material
+
+enum TipoPrenda
+enum CategoriaPrenda
+TipoPrenda -> CategoriaPrenda
+enum Material
+enum Trama
+class Color
+
+@enduml

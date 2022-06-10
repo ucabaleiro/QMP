@@ -1,4 +1,4 @@
-package qmp;
+package qmp.servicioClima;
 
 import java.util.*;
 

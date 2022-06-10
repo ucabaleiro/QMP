@@ -1,4 +1,4 @@
-package qmp;
+package qmp.prenda;
 public class Borrador {
     String nombre;
     TipoPrenda tipo;
