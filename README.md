@@ -1,4 +1,4 @@
-#### Alternativa descartada en QMP2:
+#### QMP2:
 <br/>
 Ante al requerimiento de poder cargar las prendas en "pasos" (primero tipo, luego materiales y etc) me surgió el conflicto de cómo implementarlo de manera tal que en ningún momento se cargue una prenda que no este correctamente configurada (como podría pasar si se saltea alguno de los dos pasos mencionados). La primera solución que pensé fue hacerlo a través de una clase Borrador que tenga 2 metodos: el constructor en el que se especifica tipo, y getPrenda(), que recibe los demas atributos de una prenda propiamente configurada y devuelve la misma. En este caso, nunca se podria llegar a una prenda mal confuigurada porque no se podria terminar de configurar una prenda (paso 2) que no haya sido instanciada previamente (paso 1). El problema que surge con esto es que es **inflexible**, añadir el requerimiento de que se pueda crear una prenda en un paso más implicaría agregar OTRA clase intermedia para asegurar el orden, y así al infinito.
 <br/>
@@ -26,4 +26,9 @@ DC:
 ![](class-diagram.png)
 
 #### QMP5:
-Se añade la clase User. Un User tiene una lista de Guardarropas y cada Guardarropa tiene una referencia al User que lo creo (dueño). Un usuario puede enviar solicitudes a un guardarropas para añadir o eliminar prendas. Las solicitudes de añadir y eliminar se modelaron como dos clases que heredan de una clase abstracta Solicitud que define la interfaz aceptar() y revertir(). Un Guardarropas recibe la solicitud y en caso de que el solicitante sea el dueño del guardarropas, se acepta automaticamente, caso contrario se "reenvía" la solicitud al dueño del Guardarropas, que puede aceptarla o rechazarla cuando quiera. La solicitudes aceptadas se guardan en el Guardarropas sobre el que tuvieron efecto a modo de historial, de manera que se puedan revertir.
+Se añade la clase User. Un User tiene una lista de Guardarropas y cada Guardarropa tiene una referencia al User que lo creo (dueño). Un usuario puede crear Guardarropas propios, añadir ajenos y enviar solicitudes a un Guardarropas para añadir o eliminar prendas. Las solicitudes de añadir y eliminar se modelaron como dos clases que heredan de una clase abstracta Solicitud que define la interfaz aceptar() y revertir(). Un Guardarropas recibe la solicitud y en caso de que el solicitante sea el dueño del guardarropas, se acepta automaticamente, caso contrario se "reenvía" la solicitud al dueño del Guardarropas, que puede aceptarla o rechazarla cuando quiera. La solicitudes aceptadas se guardan en el Guardarropas sobre el que tuvieron efecto a modo de historial, de manera que se puedan revertir.
+
+Decidí separar el diagrama de clases en 3 para que sea mas entendible.
+![](Docs/usuario.png)
+![](Docs/servicioClima.png)
+![](Docs/prenda.png)
